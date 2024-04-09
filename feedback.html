@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitura Compartilhada</title>
+    <link rel="icon" href="https://i.imgur.com/TL2IB9f.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #e3f2fd;
+            color: #333;
+        }
+
+        header {
+            background-color: #64b5f6; 
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            width: 95%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            background-color: #42a5f5; 
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #ff4081;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+        main h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #42a5f5;
+            margin-bottom: 20px;
+        }
+        main p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }    
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #42a5f5;
+            color: #fff;
+        }
+
+        address {
+            font-style: normal;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        select, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        <img src="https://i.imgur.com/DcYOwRt.png" alt="Livros">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="inicial.html">Pagina Inicial</a></li>
+            <li><a href="procurar.html">Categorias de livros</a></li>
+            <li><a href="livros.html">Livros em destaque</a></li>
+            <li><a href="feedback.html">Avaliações e Comentários</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <h1>Preferências de Livros</h1>
+        <form action="#" method="post">
+            <label for="genero">Gênero Favorito:</label>
+            <select name="genero" id="genero">
+                <option value="fantasia">Fantasia</option>
+                <option value="ficcao">Ficção Científica</option>
+                <option value="romance">Romance</option>
+                <option value="suspense">Suspense</option>
+                <option value="aventura">Aventura</option>
+            </select>
+        
+            <label for="autor">Autor Favorito:</label>
+            <input type="text" id="autor" name="autor">
+        
+            <label for="ano">Ano de Lançamento Preferido:</label>
+            <input type="number" id="ano" name="ano">
+
+            <label for="livro">Deixe seu comentario sobre algum livro que voce leu:</label>
+            <input type="text" id="livro" name="livro">
+        
+            <input type="submit" value="Enviar">
+        </form>
+
+    </main>
+
+    <footer>
+        <section id="contato">
+            <h2>Contato</h2>
+            <address>
+                <p>Entre em contato conosco:</p>
+                <p>Endereço: Rua do meio, 123</p>
+                <p>Email: leituracompartilhada@contato.com</p>
+                <p>Telefone: (83) 4002-8922</p>
+            </address>
+        </section>
+    </footer> 
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitura Compartilhada</title>
+    <link rel="icon" href="https://i.imgur.com/TL2IB9f.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #e3f2fd;
+            color: #333;
+        }
+
+        header {
+            background-color: #64b5f6; 
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            width: 95%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            background-color: #42a5f5; 
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #ff4081;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+        main h1 {
+            font-size: 24px;
+            color: #42a5f5;
+            margin-bottom: 20px;
+        }
+        main p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }    
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #42a5f5;
+            color: #fff;
+        }
+
+        address {
+            font-style: normal;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .carrossel-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .carrossel {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            background-color: #f5f5f5; 
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+        }
+        .livros-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .livro {
+            flex: 0 0 auto;
+            margin-right: 15px;
+            width: 150px;
+            max-width: 150px;
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+            transition: box-shadow 0.3s ease; 
+        }
+        .livro img {
+            width: calc(100% - 20px);
+            height: auto;
+            max-height: 200px;
+        }
+        .livro p {
+            color: rgb(255, 255, 255)000;
+        }
+        .livro:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); 
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px;
+            background-color: #42a5f5;
+            color: #fff;
+            border: none;
+            z-index: 1;
+            background-color: #42a5f5; 
+            border-radius: 50%; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease; 
+        }
+        .prev:hover, .next:hover {
+            background-color: #64b5f6;
+        }
+        .prev {
+            left: 0;
+        }
+        .next {
+            right: 0;
+        }
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .livros-container.auto {
+            animation: slide 10s infinite linear;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.imgur.com/DcYOwRt.png" alt="Livros">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="inicial.html">Pagina Inicial</a></li>
+            <li><a href="procurar.html">Categorias de livros</a></li>
+            <li><a href="livros.html">Livros em destaque</a></li>
+            <li><a href="feedback.html">Avaliações e Comentários</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Categorias</h1>
+
+        <h1 class="text-center">Ficção Científica:</h1>
+
+        <div class="carrossel-container">
+            <div class="carrossel">
+                <div class="livros-container auto">
+                    <div class="livro">
+                        <img src="images/ficcao1.jpg" alt="Livro 1">
+                        <p>Admirável mundo novo</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/ficcao2.jpg" alt="Livro 2">
+                        <p>Duna: livro 1</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/ficcao3.jpg" alt="Livro 3">
+                        <p>I, Robot: Isaac Asimov</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/ficcao.jpg" alt="Livro 4">
+                        <p>Neuromancer: 1</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/ficcao4.jpg" alt="Livro 5">
+                        <p>Fahrenheit 451</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/ficcao5.jpg" alt="Livro 6">
+                        <p>Guerra do Velho: 1</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/ficcao6.jpg" alt="Livro 7">
+                        <p>Flores Para Algernon</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/ficcao7.jpg" alt="Livro 8">
+                        <p>A floresta sombria: 2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="text-center">Fantasia:</h1>
+
+        <div class="carrossel-container">
+            <div class="carrossel">
+                <div class="livros-container auto">
+                    <div class="livro">
+                        <img src="images/fantasia.jpg" alt="Livro 1">
+                        <p>Eragon</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/fantasia2.jpg" alt="Livro 2">
+                        <p>O Ladrão de Raios - Percy Jackson</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/fantasia3.jpg" alt="Livro 3">
+                        <p>O nome do vento</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/fantasia4.jpg" alt="Livro 4">
+                        <p>A rainha vermelha</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/fantasia5.jpg" alt="Livro 5">
+                        <p>Shadow and Bone: 1</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/fantasia6.jpg" alt="Livro 6">
+                        <p>2001: A Space Odyssey</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/fantasia7.jpg" alt="Livro 7">
+                        <p>Trono de vidro</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/fantasia8.jpg" alt="Livro 8">
+                        <p>O gigante enterrado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 class="text-center">Romance:</h1>
+
+        <div class="carrossel-container">
+            <div class="carrossel">
+                <div class="livros-container auto">
+                    <div class="livro">
+                        <img src="images/romance.jpg" alt="Livro 1">
+                        <p>Amor & Gelato: 1</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/romance2.jpg" alt="Livro 2">
+                        <p>A culpa é das estrelas</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/romance3.jpg" alt="Livro 3">
+                        <p>Novembro, 9</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/romance5.jpg" alt="Livro 4">
+                        <p>Antes que o café esfrie 2</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/romance6.jpg" alt="Livro 5">
+                        <p>Eleanor & Park</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/romance7.jpg" alt="Livro 6">
+                        <p>Mil beijos de garoto</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/romance8.jpg" alt="Livro 7">
+                        <p>Melhor do que nos filmes</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/romance9.jpg" alt="Livro 8">
+                        <p>Anna Karenina</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 class="text-center">Suspense:</h1>
+
+        <div class="carrossel-container">
+            <div class="carrossel">
+                <div class="livros-container auto">
+                    <div class="livro">
+                        <img src="images/suspense.jpg" alt="Livro 1">
+                        <p>O Homem de Giz</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/suspense1.jpg" alt="Livro 2">
+                        <p>A paciente silenciosa</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/suspense3.jpg" alt="Livro 3">
+                        <p>Jantar secreto</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/suspense4.jpg" alt="Livro 4">
+                        <p>A lista de convidados</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/suspense5.jpg" alt="Livro 5">
+                        <p>A empregada</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/suspense6.jpg" alt="Livro 6">
+                        <p>A mulher na janela</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/suspense7.jpg" alt="Livro 7">
+                        <p>Os cinco sobreviventes</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/suspense8.jpg" alt="Livro 8">
+                        <p>Joyland</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 class="text-center">Aventura:</h1>
+
+        <div class="carrossel-container">
+            <div class="carrossel">
+                <div class="livros-container auto">
+                    <div class="livro">
+                        <img src="images/aventura.jpg" alt="Livro 1">
+                        <p>A Ilha do Tesouro</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/aventura1.jpg" alt="Livro 2">
+                        <p>O Hobbit</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/HP.jpg" alt="Livro 3">
+                        <p>Harry Potter e a Pedra Filosofal</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/aventura3.jpg" alt="Livro 4">
+                        <p>A Volta ao Mundo em 80 Dias</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/aventura4.jpg" alt="Livro 5">
+                        <p>The Hitchhiker's Guide to the Galaxy</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/aventura5.jpg" alt="Livro 6">
+                        <p>Moby Dick</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/aventura6.jpg" alt="Livro 7">
+                        <p>Viagem ao centro da Terra</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/aventura7.jpg" alt="Livro 8">
+                        <p>O Homem Invisível</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <section id="contato">
+            <h2>Contato</h2>
+            <address>
+                <p>Entre em contato conosco:</p>
+                <p>Endereço: Rua do meio, 123</p>
+                <p>Email: leituracompartilhada@contato.com</p>
+                <p>Telefone: (83) 4002-8922</p>
+            </address>
+        </section>
+    </footer> 
+</body>
+</html>

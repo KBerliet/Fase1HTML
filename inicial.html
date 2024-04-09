@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitura Compartilhada</title>
+    <link rel="icon" href="https://i.imgur.com/TL2IB9f.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        
+        body {
+            font-family: 'Roboto', sans-serif;;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #e3f2fd;
+            color: #333;
+        }
+
+        header {
+            background-color: #64b5f6;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            width: 95%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            background-color: #42a5f5;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #ff4081;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+            color: #42a5f5
+        }
+
+        main h1 {
+            font-size: 24px;
+            color: #42a5f5;
+            margin-bottom: 20px;
+        }
+        main p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }      
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #42a5f5;
+            color: #fff;
+        }
+
+        address {
+            font-style: normal;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .carrossel-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .carrossel {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            background-color: #f5f5f5; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+        }
+        .livros-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .livro {
+            flex: 0 0 auto;
+            margin-right: 15px;
+            width: 150px;
+            max-width: 150px;
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+            transition: box-shadow 0.3s ease;
+        }
+        .livro img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+        }
+        .livro p {
+            color: rgb(255, 255, 255)000; 
+        }
+        .livro:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); 
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px;
+            background-color: #42a5f5;
+            color: #fff;
+            border: none;
+            z-index: 1;
+            background-color: #42a5f5;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+            transition: background-color 0.3s ease;
+        }
+        .prev:hover, .next:hover {
+            background-color: #64b5f6;
+        }
+        .prev {
+            left: 0;
+        }
+        .next {
+            right: 0;
+        }
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .livros-container.auto {
+            animation: slide 10s infinite linear;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        .img-content {
+            width: 765px;
+            height: 400px;
+        }
+        .text-content {
+            font-size: 22px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        @media (max-width: 795px) {
+            .img-content {
+                width: 500px;
+            }
+            .text-content {
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 510px) {
+            .img-content {
+                    width: 100%;
+                    height: auto;
+                }
+        }
+        @media (max-width: 410px) {
+            .text-content {
+                    text-align: center;
+            }
+        }   
+    
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://i.imgur.com/DcYOwRt.png" alt="Livros">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="inicial.html">Pagina Inicial</a></li>
+            <li><a href="procurar.html">Categorias de livros</a></li>
+            <li><a href="livros.html">Livros em destaque</a></li>
+            <li><a href="feedback.html">Avaliações e Comentários</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Bem-vindo à Leitura Compartilhada</h2>
+        <p>Em um mundo repleto de histórias fascinantes, onde cada livro é uma porta para um universo novo e emocionante, nossa plataforma foi criada com o objetivo de celebrar a paixão pela leitura. Seja você um ávido devorador de livros ou alguém que está começando sua jornada literária, aqui você encontrará um espaço acolhedor para explorar, descobrir e compartilhar o prazer da leitura.</p>
+        <p>Navegue por nossas seções e descubra uma ampla variedade de títulos em alta, desde os clássicos atemporais até as últimas novidades literárias. Explore recomendações, compartilhe suas opiniões e participe de discussões apaixonadas sobre os livros que mexem com sua imaginação e enriquecem sua vida.</p>
+        <p>A Leitura Compartilhada é mais do que uma plataforma online, é uma comunidade de leitores dedicados que valorizam a magia das palavras e o poder transformador da literatura. Junte-se a nós nessa jornada de descobertas literárias e embarque em uma aventura que só a leitura pode proporcionar.</p>
+        <p>Vamos mergulhar juntos no universo encantado dos livros!</p>
+
+        <audio controls>
+            <source src="C:\Users\aluno\Desktop\Site\ttsmaker-file-2024-3-14-21-30-19.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+          </audio>
+  
+        <h1 class="text-center">Livros mais vendidos:</h1>
+
+        <div class="carrossel-container">
+            <div class="carrossel">
+                <div class="livros-container auto">
+                    <div class="livro">
+                        <img src="images/HP.jpg" alt="Livro 1">
+                        <p>Harry Potter</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/SA.jpg" alt="Livro 2">
+                        <p>O Senhor dos Anéis</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/principe.jpg" alt="Livro 3">
+                        <p>O Pequeno Príncipe</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/codigo.jpg" alt="Livro 4">
+                        <p>O Código Da Vinci</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/alquimista.jpg" alt="Livro 5">
+                        <p>O Alquimista</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/vermelho.jpg" alt="Livro 6">
+                        <p>O Livro Vermelho</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/biblia.jpg" alt="Livro 7">
+                        <p>A Bíblia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="text-center">Livros em alta:</h1>
+
+        <div class="carrossel-container">
+            <div class="carrossel">
+                <div class="livros-container auto">
+                    <div class="livro">
+                        <img src="images/Senna.jpg" alt="Livro 1">
+                        <p>Ayrton Senna</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/acaba.jpg" alt="Livro 2">
+                        <p>É assim que acaba</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/começa.jpg" alt="Livro 3">
+                        <p>É assim que começa</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/flores.jpg" alt="Livro 4">
+                        <p>Onde estão as flores?</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/rio.jpg" alt="Livro 5">
+                        <p>Tudo é rio</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/sabedoria.jpg" alt="Livro 6">
+                        <p>Minutos de sabedoria</p>
+                    </div>
+                    <div class="livro">
+                        <img src="images/esperto.jpg" alt="Livro 7">
+                        <p>Mais esperto que o diabo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p></p>
+
+        <h1>Reviews:</h1>
+
+        <table>
+            <tr>
+              <th>Livro</th>
+              <th>Análise do livro</th>
+            </tr>
+            <tr>
+              <td>Harry potter</td>
+              <td><a href="https://www.youtube.com/watch?v=YeJ7O-Y03fs">Review no youtube por "PÁGINA 31"</a></td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <th>Livro</th>
+              <th>Análise do livro</th>
+            </tr>
+            <tr>
+              <td>Eragon Volume1</td>
+              <td><a href="https://www.youtube.com/watch?v=WehH49FgdnI">Review no youtube por "Sala Mágica do Vilmar"</a></td>
+            </tr>
+          </table>
+
+          <h2>Livros mais procurados</h2>
+
+        <table>
+            <tr>
+                <th>Posição</th>
+                <th>Nome do Livro</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>É assim que acaba - Colleen Hoover</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Nas pegadas da alemoa - Ilko Minev</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Amor & gelato - Jenna Evans Welch</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>É assim que começa - Colleen Hoover</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Torto arado - Itamar Vieira Junior</td>
+            </tr>
+        </table>    
+          
+
+    </main>
+    
+    <footer>
+        <section id="contato">
+            <h2>Contato</h2>
+            <address>
+                <p>Entre em contato conosco:</p>
+                <p>Endereço: Rua do meio, 123</p>
+                <p>Email: leituracompartilhada@contato.com</p>
+                <p>Telefone: (83) 4002-8922</p>
+            </address>
+        </section>
+    </footer>
+</body>
+</html>
